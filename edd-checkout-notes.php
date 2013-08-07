@@ -79,6 +79,13 @@ class Astoundify_EDD_Checkout_Notes {
 		$this->load_textdomain();
 	}
 
+	/**
+	 * Output the field on the bottom of the checkout.
+	 *
+	 * @since Easy Digital Downloads - Checkout Notes 1.0
+	 *
+	 * @return void
+	 */
 	public function field() {
 		global $edd_options;
 
@@ -109,12 +116,29 @@ class Astoundify_EDD_Checkout_Notes {
 		echo ob_get_clean();
 	}
 
+	/**
+	 * When the payment is processed, save the extra data to the payment meta.
+	 *
+	 * @since Easy Digital Downloads - Checkout Notes 1.0
+	 *
+	 * @param array
+	 * @return void
+	 */
 	public function save( $payment_meta ) {
 		$payment_meta[ 'edd_acn' ] = isset( $_POST[ 'edd_acn' ] ) ? wp_kses_data( $_POST[ 'edd_acn' ] ) : null;
 
 		return $payment_meta;
 	}
 
+	/**
+	 * When viewing an order's details via Payment History, output the extra
+	 * data that was collected.
+	 *
+	 * @since Easy Digital Downloads - Checkout Notes 1.0
+	 *
+	 * @param int
+	 * @return void
+	 */
 	public function display( $payment_id ) {
 		global $edd_options;
 
@@ -130,6 +154,15 @@ class Astoundify_EDD_Checkout_Notes {
 		echo '</div>';
 	}
 
+	/**
+	 * Add settings fields for the fieldset legend, input label,
+	 * and input description.
+	 *
+	 * @since Easy Digital Downloads - Checkout Notes 1.0
+	 *
+	 * @param array $settings
+	 * @return array $settings
+	 */
 	public function settings( $settings ) {
 		$settings[ 'acn_settings' ] = array(
 			'id'   => 'acn_settings',
@@ -165,6 +198,14 @@ class Astoundify_EDD_Checkout_Notes {
 		return $settings;
 	}
 
+	/**
+	 * Add the extra notes to the export columns.
+	 *
+	 * @since Easy Digital Downloads - Checkout Notes 1.0
+	 *
+	 * @param array
+	 * @return array
+	 */
 	public function export_columns( $columns ) {
 		global $edd_options;
 
@@ -175,9 +216,18 @@ class Astoundify_EDD_Checkout_Notes {
 		return $columns;
 	}
 
+	/**
+	 * Add the extra notes to the export columns.
+	 *
+	 * @since Easy Digital Downloads - Checkout Notes 1.0
+	 *
+	 * @param array
+	 * @param int
+	 * @return array
+	 */
 	public function export_columns_values( $values, $payment_id ) {
 		global $edd_options;
-		
+
 		$payment_meta = edd_get_payment_meta( $payment_id );
 		$label        = isset ( $edd_options[ 'acn_field_label' ] ) ? esc_attr( $edd_options[ 'acn_field_label' ] ) : null;
 
