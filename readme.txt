@@ -5,8 +5,8 @@ Plugin URI: http://github.com/astoundify/edd-checkout-notes
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=contact@appthemer.com&item_name=Donation+for+EDD Checkout Notes
 Contributors: SpencerFinnell
 Tags: easy digital downloads, checkout, checkout notes
-Requires at least: 3.5
-Tested up to: 3.5
+Requires at least: 3.9
+Tested up to: 3.9
 Stable Tag: 1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
